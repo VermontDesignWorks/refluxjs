@@ -176,6 +176,10 @@ module.exports = {
             }
         });
 
+        // Ensure that the promise does trigger "Uncaught (in promise)" errors in console if no error handler is added
+        // See: https://github.com/reflux/reflux-promise/issues/4
+        promise.catch(function() {});
+
         return promise;
     }
 };
